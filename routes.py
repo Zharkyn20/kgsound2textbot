@@ -14,6 +14,9 @@ from pydub import AudioSegment
 from bot import bot, dp
 from settings import get_settings
 
+
+Response = Union[None, dict]
+
 cfg = get_settings()
 
 root_router = APIRouter(
@@ -42,7 +45,7 @@ async def root() -> dict:
 
 @root_router.post(cfg.webhook_path)
 async def bot_webhook(update: dict,
-                      x_telegram_bot_api_secret_token: Annotated[str | None, Header()] = None) -> Union[None, dict]:
+                      x_telegram_bot_api_secret_token: Annotated[str | None, Header()] = None) -> Response:
     """ Register webhook endpoint for telegram bot"""
     print('update:', update)
     if x_telegram_bot_api_secret_token != cfg.telegram_my_token:
