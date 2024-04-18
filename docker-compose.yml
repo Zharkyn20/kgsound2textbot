@@ -13,14 +13,14 @@ services:
       - ./:/bot
     depends_on:
       - bot-db
-    command: ["healthy-check.sh", "bot-db:5432"]
+    command: ["healthy-check.sh", "bot-db:5433"]
 
 
   bot-db:
     container_name: bot-db
     image: postgres:latest
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data/
     env_file: .env
