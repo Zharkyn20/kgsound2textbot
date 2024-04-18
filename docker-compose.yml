@@ -6,7 +6,7 @@ services:
     container_name: bot
     build: ./
     ports:
-      - "8001:8001"
+      - "443:443"
     restart: always
     entrypoint: /entrypoint.sh
     volumes:
