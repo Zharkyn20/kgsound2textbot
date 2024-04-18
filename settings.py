@@ -15,9 +15,16 @@ class Settings(BaseSettings):
     base_webhook_url: str
     webhook_path: str
     telegram_my_token: str
+
     tts_url: str
     stt_url: str
     api_token: str
+
+    postgres_db: str
+    postgres_user: str
+    postgres_password: str
+    postgres_host: str
+    postgres_port: str
 
 
 @lru_cache()  # get it from memory
