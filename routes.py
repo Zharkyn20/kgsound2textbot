@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 
 import httpx
-from typing import Annotated, Optional
+from typing import Annotated, Optional, Union
 
 from aiogram import types
 from fastapi import APIRouter, Header
@@ -42,7 +42,7 @@ async def root() -> dict:
 
 @root_router.post(cfg.webhook_path)
 async def bot_webhook(update: dict,
-                      x_telegram_bot_api_secret_token: Annotated[str | None, Header()] = None) -> None | dict:
+                      x_telegram_bot_api_secret_token: Annotated[str | None, Header()] = None) -> Union[None, dict]:
     """ Register webhook endpoint for telegram bot"""
     print('update:', update)
     if x_telegram_bot_api_secret_token != cfg.telegram_my_token:
