@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 
 import httpx
-from typing import Annotated, Optional, Union
+from typing import Annotated, Optional, Union, TypeVar
 
 from aiogram import types
 from fastapi import APIRouter, Header
@@ -14,7 +14,7 @@ from pydub import AudioSegment
 from bot import bot, dp
 from settings import get_settings
 
-
+T = TypeVar('T')
 Response = Union[None, dict]
 
 cfg = get_settings()
