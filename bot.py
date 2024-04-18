@@ -48,7 +48,7 @@ async def set_webhook(my_bot: Bot) -> None:
 
 async def start_telegram():
     fr = await first_run()
-    if cfg.debug:
-        logger.debug(f"First run: {fr}")
-    if fr:
-        await set_webhook(bot)
+    # if cfg.debug:
+    #     logger.debug(f"First run: {fr}")
+    # if fr:
+    await set_webhook(bot)
