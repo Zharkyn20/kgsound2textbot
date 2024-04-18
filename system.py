@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-__author__ = 'Nikolay Mamashin (mamashin@gmail.com)'
-
 from os import getppid
 import redis.asyncio as aredis
 from settings import get_settings

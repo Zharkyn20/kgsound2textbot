@@ -1,0 +1,12 @@
+/.env
+.idea
+.venv
+myenv
+__pycache__
+*.pyc
+*.pyo
+*/__pycache__/*
+.DS_Store
+123
+123-1.mp3
+123*

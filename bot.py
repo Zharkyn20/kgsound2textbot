@@ -1,5 +1,4 @@
-# -*- coding: utf-8 -*-
-__author__ = 'Nikolay Mamashin (mamashin@gmail.com)'
+from __future__ import annotations
 
 from aiogram import Bot, Dispatcher, Router, types
 from aiogram.enums import ParseMode
@@ -23,6 +22,7 @@ bot = Bot(token=cfg.bot_token, parse_mode=ParseMode.HTML)
 async def set_webhook(my_bot: Bot) -> None:
     # Check and set webhook for Telegram
     async def check_webhook() -> WebhookInfo | None:
+        logger.info("Checking webhook")
         try:
             webhook_info = await my_bot.get_webhook_info()
             return webhook_info
@@ -46,21 +46,9 @@ async def set_webhook(my_bot: Bot) -> None:
         logger.error(f"Can't set webhook - {e}")
 
 
-async def set_bot_commands_menu(my_bot: Bot) -> None:
-    # Register commands for Telegram bot (menu)
-    commands = [
-        BotCommand(command="/id", description="👋 Get my ID"),
-    ]
-    try:
-        await my_bot.set_my_commands(commands)
-    except Exception as e:
-        logger.error(f"Can't set commands - {e}")
-
-
 async def start_telegram():
     fr = await first_run()
     if cfg.debug:
         logger.debug(f"First run: {fr}")
     if fr:
         await set_webhook(bot)
-        await set_bot_commands_menu(bot)
